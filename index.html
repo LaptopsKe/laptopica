@@ -22,16 +22,17 @@
 
   /* ===== SAME-DAY DELIVERY BAR ===== */
   .delivery-bar {
-    background: var(--secondary);
-    color: #fff;
+    background: #000;          /* match header */
+    color: #0AA6FF;            /* deep electric blue text */
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    padding: 6px 10px;
+    padding: 8px 10px;
     letter-spacing: 0.5px;
-    position: sticky;   /* <-- keeps it pinned */
+    position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid #222;
   }
 
   /* ===== HEADER ===== */
@@ -45,7 +46,6 @@
     flex-wrap: wrap;
     border-bottom: 2px solid #222;
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-    margin-top: 0; /* sits directly under sticky bar */
   }
   header img.logo { width: 480px; height: auto; margin-right: 20px; }
   header .title-wrap { display: flex; flex-direction: column; justify-content: center; }
@@ -149,7 +149,6 @@
 </head>
 <body>
 
-<!-- Sticky Same-Day Delivery Bar -->
 <div class="delivery-bar">
   🚚 Same-Day Delivery Across Kenya – Order Today, Use Today
 </div>
@@ -243,4 +242,5 @@
 
 </body>
 </html>
+
 

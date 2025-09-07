@@ -14,50 +14,25 @@
   header .title-wrap{display:flex;flex-direction:column;justify-content:center;}
   header .title-wrap h1{font-size:2rem;margin-bottom:6px;}
   header .title-wrap p{font-size:1rem;opacity:0.9;}
-  .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;padding:40px 20px;max-width:1100px;margin:0 auto;}
+  /* filter bar */
+  .filters{max-width:1100px;margin:20px auto 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;}
+  .filters input{flex:1 1 200px;padding:6px 10px;font-size:0.95rem;border:1px solid #ccc;border-radius:4px;}
+  .filters .buttons{display:flex;gap:6px;}
+  .filters button{padding:6px 12px;border:1px solid #999;background:#fff;cursor:pointer;border-radius:4px;font-size:0.9rem;}
+  .filters button.active,.filters button:hover{background:#27ae60;color:#fff;}
+  /* product grid */
+  .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;padding:25px 20px;max-width:1100px;margin:0 auto;}
   .product{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.08);transition:transform 0.2s;text-align:center;padding:20px;}
   .product:hover{transform:translateY(-4px);}
   .product h3{font-size:1.1rem;margin:12px 0 5px;}
   .product p{font-size:0.95rem;color:#555;margin-bottom:12px;}
-  /* Show only first img in card */
-  .product .gallery {
-    position: relative;
-    width: 100%;
-    height: 160px;
-    overflow: hidden;
-  }
-  .product .gallery img {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 160px;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: zoom-in;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .product .gallery img:first-child { opacity: 1; }
-  /* Tiny film-strip badge */
-  .thumb-strip {
-    position: absolute;
-    bottom: 6px;
-    left: 6px;
-    display: flex;
-    gap: 2px;
-    background: rgba(0,0,0,0.5);
-    padding: 2px;
-    border-radius: 4px;
-    pointer-events: none; /* clicks still go to main */
-  }
-  .thumb-strip img {
-    width: 22px;
-    height: 22px;
-    object-fit: cover;
-    border-radius: 2px;
-    opacity: 0.85;
-  }
+  /* only first image visible */
+  .product .gallery{position:relative;width:100%;height:160px;overflow:hidden;}
+  .product .gallery img{position:absolute;top:0;left:50%;transform:translateX(-50%);height:160px;object-fit:cover;border-radius:6px;cursor:zoom-in;opacity:0;transition:opacity 0.3s;}
+  .product .gallery img:first-child{opacity:1;}
+  /* thumb-strip badge */
+  .thumb-strip{position:absolute;bottom:6px;left:6px;display:flex;gap:2px;background:rgba(0,0,0,0.5);padding:2px;border-radius:4px;pointer-events:none;}
+  .thumb-strip img{width:22px;height:22px;object-fit:cover;border-radius:2px;opacity:0.85;}
   .order-container{position:relative;display:inline-block;}
   .order-button{background:var(--secondary);color:#fff;padding:8px 14px;border-radius:4px;text-decoration:none;font-size:0.95rem;cursor:pointer;transition:background 0.2s;}
   .order-button:hover{background:#1f8a4c;}
@@ -65,21 +40,15 @@
   .order-menu a{display:block;padding:8px 10px;color:#333;text-decoration:none;font-size:0.9rem;}
   .order-menu a:hover{background:#f4f4f4;}
   .order-container.active .order-menu{display:block;}
-  section.section{text-align:center;padding:40px 20px;max-width:900px;margin:0 auto;}
-  .testimonials{background:#ecf0f1;}
-  .testimonials p{font-style:italic;margin-top:10px;color:#555;}
-  footer{background:#34495e;color:#fff;text-align:center;padding:18px;font-size:0.9rem;}
-  footer p + p{margin-top:4px;}
-  /* Lightbox */
+  /* lightbox */
   #lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:2000;justify-content:center;align-items:center;}
   #lightbox.active{display:flex;}
   #lightbox .lightbox-img{max-width:90%;max-height:90%;border-radius:6px;box-shadow:0 4px 15px rgba(0,0,0,0.5);}
-  #lightbox .close{position:absolute;top:20px;right:30px;font-size:2rem;color:#fff;cursor:pointer;user-select:none;}
-  #lightbox .prev,#lightbox .next{position:absolute;top:50%;font-size:2.5rem;color:#fff;cursor:pointer;user-select:none;padding:0 12px;transform:translateY(-50%);}
-  #lightbox .prev{left:30px;}
-  #lightbox .next{right:30px;}
+  #lightbox .close{position:absolute;top:20px;right:30px;font-size:2rem;color:#fff;cursor:pointer;}
+  #lightbox .prev,#lightbox .next{position:absolute;top:50%;font-size:2.5rem;color:#fff;cursor:pointer;padding:0 12px;transform:translateY(-50%);}
+  #lightbox .prev{left:30px;}#lightbox .next{right:30px;}
   #lightbox .prev:hover,#lightbox .next:hover{color:#0AA6FF;}
-  @media (max-width:600px){
+  @media(max-width:600px){
     header{flex-direction:column;align-items:center;text-align:center;padding:15px;}
     header img.logo{width:180px;margin:0 0 8px;}
     header .title-wrap h1{font-size:1.4rem;}
@@ -90,7 +59,6 @@
 <body>
 
 <div class="delivery-bar">🚚 Same-Day Delivery Across Kenya – Order Today, Use Today</div>
-
 <header>
   <img src="logo.png" alt="Laptopica Logo" class="logo">
   <div class="title-wrap">
@@ -99,40 +67,103 @@
   </div>
 </header>
 
+<section class="filters">
+  <input type="text" id="search" placeholder="🔍 Search laptops...">
+  <div class="buttons">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="hp">HP</button>
+    <button data-filter="dell">Dell</button>
+    <button data-filter="lenovo">Lenovo</button>
+    <button data-filter="nec">NEC</button>
+  </div>
+</section>
+
 <section class="products">
-  <!-- Just one sample shown, replicate for others -->
-  <div class="product">
+  <!-- HP i5 -->
+  <div class="product" data-brand="hp">
     <div class="gallery">
       <img src="hp-eb820-1.jpg" alt="">
       <img src="hp-eb820-2.jpg" alt="">
       <img src="hp-eb820-3.jpg" alt="">
     </div>
     <h3>HP Refurbished EliteBook 820 G3</h3>
-    <p>Intel Core I5 (6th Gen) • 8GB RAM • 256GB SSD • WIN10 • Silver + Laptop Bag<br>
-       Brand: HP – <strong>KSh 20,999</strong></p>
-    <div class="order-container">
-      <a href="#" class="order-button">Order Now</a>
-      <div class="order-menu">
-        <a href="https://wa.me/254716292318?text=I'm%20interested%20in%20HP%20EliteBook%20820%20G3" target="_blank">WhatsApp</a>
-        <a href="https://m.me/yourpageusername" target="_blank">Messenger</a>
-        <a href="tel:+254716292318">Call</a>
-      </div>
+    <p>Intel Core I5 (6th Gen) • 8GB • 256GB SSD • WIN10 • Silver + Laptop Bag<br>Brand: HP – <strong>KSh 20,999</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
     </div>
   </div>
-
-  <!-- Repeat product blocks for all other laptops (hp-820, hp-840, dell-7270, versa, lenovo-cb etc.) -->
+  <!-- HP i7 -->
+  <div class="product" data-brand="hp">
+    <div class="gallery">
+      <img src="hp-820-1.jpg" alt="">
+      <img src="hp-820-2.jpg" alt="">
+      <img src="hp-820-3.jpg" alt="">
+      <img src="hp-820-4.jpg" alt="">
+    </div>
+    <h3>HP Refurbished EliteBook 820 G3</h3>
+    <p>6th Gen • Intel Core I7 • 16GB • 512GB SSD • 12.5″ • Silver<br>Brand: HP – <strong>KSh 27,649</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
+  <!-- HP G1 -->
+  <div class="product" data-brand="hp">
+    <div class="gallery">
+      <img src="hp-840-1.jpg" alt="">
+      <img src="hp-840-2.jpg" alt="">
+      <img src="hp-840-3.jpg" alt="">
+      <img src="hp-840-4.jpg" alt="">
+    </div>
+    <h3>HP EliteBook 820 G1</h3>
+    <p>Core I5 • 8GB • 500GB HDD • Slim Ultrabook • 6-Month WRTY + Mouse<br><strong>KSh 18,624</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
+  <!-- Dell -->
+  <div class="product" data-brand="dell">
+    <div class="gallery">
+      <img src="dell-7270-1.jpg" alt="">
+      <img src="dell-7270-2.jpg" alt="">
+    </div>
+    <h3>DELL Latitude 7270</h3>
+    <p>Core I5 • 8GB • 256GB SSD • 6th Gen • 12.5″ Ultrabook • Win10 • Refurb<br>Brand: DELL – <strong>KSh 19,575</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
+  <!-- NEC -->
+  <div class="product" data-brand="nec">
+    <div class="gallery">
+      <img src="versa-1.jpg" alt="">
+      <img src="versa-2.jpg" alt="">
+      <img src="versa-3.jpg" alt="">
+    </div>
+    <h3>NEC VersaPro X360</h3>
+    <p>4GB • 64GB SSD • 11″ • Windows 11 • Black<br>Brand: NEC – <strong>KSh 15,499</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
+  <!-- Lenovo -->
+  <div class="product" data-brand="lenovo">
+    <div class="gallery">
+      <img src="lenovo-cb-1.jpg" alt="">
+      <img src="lenovo-cb-2.jpg" alt="">
+    </div>
+    <h3>Lenovo Chromebook</h3>
+    <p>4GB • 32GB SSD • 11.6″ HD • Wi-Fi • Chrome OS • Student Laptop<br>Brand: Lenovo – <strong>KSh 7,985</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
 </section>
 
 <!-- Lightbox -->
-<div id="lightbox">
-  <span class="close">&times;</span>
-  <img class="lightbox-img" src="" alt="">
-  <span class="prev">&#10094;</span>
-  <span class="next">&#10095;</span>
-</div>
+<div id="lightbox"><span class="close">&times;</span><img class="lightbox-img" src="" alt=""><span class="prev">&#10094;</span><span class="next">&#10095;</span></div>
 
 <script>
-/* order dropdown */
+// dropdowns
 document.querySelectorAll('.order-button').forEach(btn=>{
   btn.addEventListener('click',e=>{
     e.preventDefault();
@@ -142,61 +173,67 @@ document.querySelectorAll('.order-button').forEach(btn=>{
   });
 });
 document.addEventListener('click',e=>{
-  if(!e.target.closest('.order-container')){
-    document.querySelectorAll('.order-container').forEach(c=>c.classList.remove('active'));
-  }
+  if(!e.target.closest('.order-container')){document.querySelectorAll('.order-container').forEach(c=>c.classList.remove('active'));}
 });
-
-/* lightbox logic */
+// lightbox
 const lightbox=document.getElementById('lightbox'),
       lightboxImg=lightbox.querySelector('.lightbox-img'),
       prevBtn=lightbox.querySelector('.prev'),
       nextBtn=lightbox.querySelector('.next'),
       closeBtn=lightbox.querySelector('.close');
 let currentGallery=[],currentIndex=0;
-
 document.querySelectorAll('.product .gallery img').forEach(img=>{
   img.addEventListener('click',()=>{
     const g=img.closest('.gallery');
     currentGallery=Array.from(g.querySelectorAll('img'));
     currentIndex=currentGallery.indexOf(img);
-    showImage();
-    lightbox.classList.add('active');
+    showImage();lightbox.classList.add('active');
   });
 });
-function showImage(){ lightboxImg.src=currentGallery[currentIndex].src; }
-prevBtn.addEventListener('click',e=>{
-  e.stopPropagation();
-  currentIndex=(currentIndex-1+currentGallery.length)%currentGallery.length;
-  showImage();
-});
-nextBtn.addEventListener('click',e=>{
-  e.stopPropagation();
-  currentIndex=(currentIndex+1)%currentGallery.length;
-  showImage();
-});
+function showImage(){lightboxImg.src=currentGallery[currentIndex].src;}
+prevBtn.addEventListener('click',e=>{e.stopPropagation();currentIndex=(currentIndex-1+currentGallery.length)%currentGallery.length;showImage();});
+nextBtn.addEventListener('click',e=>{e.stopPropagation();currentIndex=(currentIndex+1)%currentGallery.length;showImage();});
 closeBtn.addEventListener('click',()=>lightbox.classList.remove('active'));
-lightbox.addEventListener('click',e=>{ if(e.target===lightbox) lightbox.classList.remove('active');});
+lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.classList.remove('active');});
 document.addEventListener('keydown',e=>{
-  if(!lightbox.classList.contains('active')) return;
-  if(e.key==='ArrowLeft') prevBtn.click();
-  if(e.key==='ArrowRight') nextBtn.click();
-  if(e.key==='Escape') lightbox.classList.remove('active');
+  if(!lightbox.classList.contains('active'))return;
+  if(e.key==='ArrowLeft')prevBtn.click();
+  if(e.key==='ArrowRight')nextBtn.click();
+  if(e.key==='Escape')lightbox.classList.remove('active');
 });
-
-/* build thumb-strip automatically */
+// build thumb-strips
 document.querySelectorAll('.product .gallery').forEach(g=>{
   const imgs=g.querySelectorAll('img');
   if(imgs.length>1){
     const strip=document.createElement('div');
     strip.className='thumb-strip';
-    // skip the first because it's main
-    imgs.forEach((im,i)=>{if(i>0){const t=im.cloneNode();t.style.height='22px';strip.appendChild(t);} });
+    imgs.forEach((im,i)=>{if(i>0){const t=im.cloneNode();strip.appendChild(t);} });
     g.appendChild(strip);
   }
 });
+// search + category filters
+const searchBox=document.getElementById('search');
+const filterBtns=document.querySelectorAll('.filters button');
+const cards=document.querySelectorAll('.products .product');
+function applyFilters(){
+  const term=searchBox.value.toLowerCase();
+  const active=document.querySelector('.filters button.active').dataset.filter;
+  cards.forEach(c=>{
+    const matchBrand=(active==='all'||c.dataset.brand===active);
+    const matchTerm=c.innerText.toLowerCase().includes(term);
+    c.style.display=(matchBrand && matchTerm)?'':'none';
+  });
+}
+searchBox.addEventListener('input',applyFilters);
+filterBtns.forEach(b=>{
+  b.addEventListener('click',()=>{
+    filterBtns.forEach(btn=>btn.classList.remove('active'));
+    b.classList.add('active');
+    applyFilters();
+  });
+});
 </script>
-
 </body>
 </html>
+
 

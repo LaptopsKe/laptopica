@@ -19,8 +19,27 @@
   .product:hover{transform:translateY(-4px);}
   .product h3{font-size:1.1rem;margin:12px 0 5px;}
   .product p{font-size:0.95rem;color:#555;margin-bottom:12px;}
-  .product .gallery{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
-  .product .gallery img{height:160px;object-fit:cover;border-radius:6px;cursor:zoom-in;}
+  /* Gallery shows one image */
+  .product .gallery {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+  }
+  .product .gallery img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: zoom-in;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .product .gallery img:first-child { opacity: 1; }
+
   .order-container{position:relative;display:inline-block;}
   .order-button{background:var(--secondary);color:#fff;padding:8px 14px;border-radius:4px;text-decoration:none;font-size:0.95rem;cursor:pointer;transition:background 0.2s;}
   .order-button:hover{background:#1f8a4c;}
@@ -33,7 +52,7 @@
   .testimonials p{font-style:italic;margin-top:10px;color:#555;}
   footer{background:#34495e;color:#fff;text-align:center;padding:18px;font-size:0.9rem;}
   footer p + p{margin-top:4px;}
-  /* lightbox */
+  /* Lightbox */
   #lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:2000;justify-content:center;align-items:center;}
   #lightbox.active{display:flex;}
   #lightbox .lightbox-img{max-width:90%;max-height:90%;border-radius:6px;box-shadow:0 4px 15px rgba(0,0,0,0.5);}
@@ -66,9 +85,9 @@
   <!-- HP EliteBook 820 G3 – Core i5 -->
   <div class="product">
     <div class="gallery">
-      <img src="hp-eb820-1.jpg" style="width:32%;" alt="HP EliteBook 820 G3 front">
-      <img src="hp-eb820-2.jpg" style="width:32%;" alt="HP EliteBook 820 G3 side">
-      <img src="hp-eb820-3.jpg" style="width:32%;" alt="HP EliteBook 820 G3 back">
+      <img src="hp-eb820-1.jpg" alt="">
+      <img src="hp-eb820-2.jpg" alt="">
+      <img src="hp-eb820-3.jpg" alt="">
     </div>
     <h3>HP Refurbished EliteBook 820 G3</h3>
     <p>Intel Core I5 (6th Gen) • 8GB RAM • 256GB SSD • WIN10 • Silver + Laptop Bag<br>Brand: HP – <strong>KSh 20,999</strong></p>
@@ -85,10 +104,10 @@
   <!-- HP EliteBook 820 G3 – Core i7 -->
   <div class="product">
     <div class="gallery">
-      <img src="hp-820-1.jpg" style="width:23%;" alt="HP EliteBook 820 G3 i7">
-      <img src="hp-820-2.jpg" style="width:23%;" alt="HP EliteBook 820 G3 i7">
-      <img src="hp-820-3.jpg" style="width:23%;" alt="HP EliteBook 820 G3 i7">
-      <img src="hp-820-4.jpg" style="width:23%;" alt="HP EliteBook 820 G3 i7">
+      <img src="hp-820-1.jpg" alt="">
+      <img src="hp-820-2.jpg" alt="">
+      <img src="hp-820-3.jpg" alt="">
+      <img src="hp-820-4.jpg" alt="">
     </div>
     <h3>HP Refurbished EliteBook 820 G3</h3>
     <p>6th Generation • Intel Core I7 • 16GB RAM • 512GB SSD • 12.5″ • Silver<br>Brand: HP – <strong>KSh 27,649</strong></p>
@@ -105,10 +124,10 @@
   <!-- HP EliteBook 820 G1 -->
   <div class="product">
     <div class="gallery">
-      <img src="hp-840-1.jpg" style="width:23%;" alt="HP EliteBook 820 G1">
-      <img src="hp-840-2.jpg" style="width:23%;" alt="HP EliteBook 820 G1">
-      <img src="hp-840-3.jpg" style="width:23%;" alt="HP EliteBook 820 G1">
-      <img src="hp-840-4.jpg" style="width:23%;" alt="HP EliteBook 820 G1">
+      <img src="hp-840-1.jpg" alt="">
+      <img src="hp-840-2.jpg" alt="">
+      <img src="hp-840-3.jpg" alt="">
+      <img src="hp-840-4.jpg" alt="">
     </div>
     <h3>HP EliteBook 820 G1</h3>
     <p>Core I5 • 8GB RAM • 500GB HDD • Slim Ultrabook Laptop • Refurbished (6-Months WRTY) + Wireless Mouse<br><strong>KSh 18,624</strong></p>
@@ -125,8 +144,8 @@
   <!-- Dell Latitude 7270 -->
   <div class="product">
     <div class="gallery">
-      <img src="dell-7270-1.jpg" style="width:48%;" alt="Dell Latitude 7270">
-      <img src="dell-7270-2.jpg" style="width:48%;" alt="Dell Latitude 7270">
+      <img src="dell-7270-1.jpg" alt="">
+      <img src="dell-7270-2.jpg" alt="">
     </div>
     <h3>DELL Latitude 7270</h3>
     <p>Core I5 • 8GB • 256GB SSD • 6th Gen • 12.5″ Ultrabook • Win10 • Refurbished • 6 Months Warranty<br>Brand: DELL – <strong>KSh 19,575</strong></p>
@@ -143,9 +162,9 @@
   <!-- NEC VersaPro -->
   <div class="product">
     <div class="gallery">
-      <img src="versa-1.jpg" style="width:32%;" alt="NEC VersaPro X360">
-      <img src="versa-2.jpg" style="width:32%;" alt="NEC VersaPro X360">
-      <img src="versa-3.jpg" style="width:32%;" alt="NEC VersaPro X360">
+      <img src="versa-1.jpg" alt="">
+      <img src="versa-2.jpg" alt="">
+      <img src="versa-3.jpg" alt="">
     </div>
     <h3>NEC Laptop VersaPro X360</h3>
     <p>4GB RAM • 64GB SSD • 11″ • Windows 11 • Black<br>Brand: NEC – <strong>KSh 15,499</strong></p>
@@ -162,8 +181,8 @@
   <!-- Lenovo Chromebook -->
   <div class="product">
     <div class="gallery">
-      <img src="lenovo-cb-1.jpg" style="width:48%;" alt="Lenovo Chromebook">
-      <img src="lenovo-cb-2.jpg" style="width:48%;" alt="Lenovo Chromebook">
+      <img src="lenovo-cb-1.jpg" alt="">
+      <img src="lenovo-cb-2.jpg" alt="">
     </div>
     <h3>Lenovo Chromebook</h3>
     <p>4GB RAM • 32GB SSD • 11.6″ HD Display • Wi-Fi • Chrome OS – Student Laptop • Refurbished<br>Brand: Lenovo – <strong>KSh 7,985</strong></p>
@@ -219,7 +238,7 @@
     }
   });
 
-  // Lightbox logic with Prev/Next
+  // Lightbox with Prev/Next
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = lightbox.querySelector('.lightbox-img');
   const closeBtn = lightbox.querySelector('.close');
@@ -239,9 +258,7 @@
     });
   });
 
-  function showImage(){
-    lightboxImg.src = currentGallery[currentIndex].src;
-  }
+  function showImage(){ lightboxImg.src = currentGallery[currentIndex].src; }
 
   closeBtn.addEventListener('click',()=>lightbox.classList.remove('active'));
   lightbox.addEventListener('click',e=>{
@@ -270,4 +287,3 @@
 
 </body>
 </html>
-

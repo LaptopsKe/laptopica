@@ -8,9 +8,9 @@
   :root { --primary:#000; --secondary:#27ae60; --light:#f2f2f2; --text-dark:#333; }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:Arial, sans-serif;background:var(--light);color:var(--text-dark);line-height:1.5;}
-  .delivery-bar{background:#000;color:#0AA6FF;text-align:center;font-size:1.05rem;font-weight:600;padding:8px 10px;}
+  .delivery-bar{background:#000;color:#0AA6FF;text-align:center;font-size:1.05rem;font-weight:600;padding:8px;}
   header{background:var(--primary);color:#fff;display:flex;align-items:center;padding:10px 30px;flex-wrap:wrap;}
-  header img.logo{width:280px;height:auto;margin-right:20px;}
+  header img.logo{width:200px;height:auto;margin-right:20px;}
   .filters{max-width:1100px;margin:20px auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
   .filters input{flex:1 1 200px;padding:6px 10px;}
   .filters button{padding:6px 12px;border:1px solid #999;background:#fff;cursor:pointer;border-radius:4px;}
@@ -18,11 +18,13 @@
   .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;padding:25px 20px;max-width:1100px;margin:0 auto;}
   .product{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.08);padding:20px;text-align:center;}
   .product .gallery{position:relative;width:100%;height:160px;overflow:hidden;z-index:1;}
-  .product .gallery img{position:absolute;top:0;left:50%;transform:translateX(-50%);height:160px;object-fit:cover;border-radius:6px;opacity:0;transition:opacity .3s;}
+  .product .gallery img{position:absolute;top:0;left:50%;transform:translateX(-50%);height:160px;object-fit:cover;border-radius:6px;cursor:zoom-in;opacity:0;transition:opacity .3s;}
   .product .gallery img:first-child{opacity:1;}
   .order-container{position:relative;z-index:5;display:inline-block;}
   .order-button{background:var(--secondary);color:#fff;padding:8px 14px;border-radius:4px;text-decoration:none;}
   .order-menu{display:none;position:absolute;top:110%;left:0;background:#fff;min-width:140px;box-shadow:0 3px 6px rgba(0,0,0,.2);}
+  .order-menu a{display:block;padding:8px 10px;color:#333;text-decoration:none;}
+  .order-menu a:hover{background:#f4f4f4;}
   .order-container.active .order-menu{display:block;}
   footer{background:#000;color:#fff;text-align:center;padding:15px;margin-top:40px;}
 </style>
@@ -47,23 +49,89 @@
 </section>
 
 <section class="products">
-  <!-- Example HP product -->
+  <!-- HP i5 -->
   <div class="product" data-brand="hp">
     <div class="gallery">
       <img src="hp-eb820-1.jpg" alt="">
       <img src="hp-eb820-2.jpg" alt="">
       <img src="hp-eb820-3.jpg" alt="">
     </div>
-    <h3>HP EliteBook 820 G3</h3>
-    <p>Intel Core i5 • 8GB • 256GB SSD • WIN10 • Silver + Bag <br> <strong>KSh 20,999</strong></p>
-    <div class="order-container">
-      <a href="#" class="order-button">Order Now</a>
-      <div class="order-menu">
-        <a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a>
-      </div>
+    <h3>HP Refurbished EliteBook 820 G3</h3>
+    <p>Intel Core I5 (6th Gen) • 8GB • 256GB SSD • WIN10 • Silver + Laptop Bag<br><strong>KSh 20,999</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
     </div>
   </div>
-  <!-- Repeat other products (Dell, Lenovo, NEC) with their images -->
+
+  <!-- HP i7 -->
+  <div class="product" data-brand="hp">
+    <div class="gallery">
+      <img src="hp-820-1.jpg" alt="">
+      <img src="hp-820-2.jpg" alt="">
+      <img src="hp-820-3.jpg" alt="">
+      <img src="hp-820-4.jpg" alt="">
+    </div>
+    <h3>HP Refurbished EliteBook 820 G3</h3>
+    <p>6th Gen • Intel Core I7 • 16GB • 512GB SSD • 12.5″ • Silver<br><strong>KSh 27,649</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
+
+  <!-- HP G1 -->
+  <div class="product" data-brand="hp">
+    <div class="gallery">
+      <img src="hp-840-1.jpg" alt="">
+      <img src="hp-840-2.jpg" alt="">
+      <img src="hp-840-3.jpg" alt="">
+      <img src="hp-840-4.jpg" alt="">
+    </div>
+    <h3>HP EliteBook 820 G1</h3>
+    <p>Core I5 • 8GB • 500GB HDD • Slim Ultrabook • 6-Month WRTY + Mouse<br><strong>KSh 18,624</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
+
+  <!-- Dell -->
+  <div class="product" data-brand="dell">
+    <div class="gallery">
+      <img src="dell-7270-1.jpg" alt="">
+      <img src="dell-7270-2.jpg" alt="">
+    </div>
+    <h3>DELL Latitude 7270</h3>
+    <p>Core I5 • 8GB • 256GB SSD • 6th Gen • 12.5″ Ultrabook • Win10 • Refurb<br><strong>KSh 19,575</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
+
+  <!-- NEC -->
+  <div class="product" data-brand="nec">
+    <div class="gallery">
+      <img src="versa-1.jpg" alt="">
+      <img src="versa-2.jpg" alt="">
+      <img src="versa-3.jpg" alt="">
+    </div>
+    <h3>NEC VersaPro X360</h3>
+    <p>4GB • 64GB SSD • 11″ • Windows 11 • Black<br><strong>KSh 15,499</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
+
+  <!-- Lenovo -->
+  <div class="product" data-brand="lenovo">
+    <div class="gallery">
+      <img src="lenovo-cb-1.jpg" alt="">
+      <img src="lenovo-cb-2.jpg" alt="">
+    </div>
+    <h3>Lenovo Chromebook</h3>
+    <p>4GB • 32GB SSD • 11.6″ HD • Wi-Fi • Chrome OS • Student Laptop<br><strong>KSh 7,985</strong></p>
+    <div class="order-container"><a href="#" class="order-button">Order Now</a>
+      <div class="order-menu"><a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a></div>
+    </div>
+  </div>
 </section>
 
 <!-- Reviews -->
@@ -88,7 +156,7 @@
 </footer>
 
 <script>
-// dropdowns
+// dropdown menus
 document.querySelectorAll('.order-button').forEach(btn=>{
   btn.addEventListener('click',e=>{
     e.preventDefault();
@@ -105,6 +173,5 @@ document.addEventListener('click',e=>{
 </script>
 </body>
 </html>
-
 
 

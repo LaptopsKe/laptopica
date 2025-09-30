@@ -8,62 +8,23 @@
   :root { --primary:#000; --secondary:#27ae60; --light:#f2f2f2; --text-dark:#333; }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:Arial, sans-serif;background:var(--light);color:var(--text-dark);line-height:1.5;}
-  .delivery-bar{background:#000;color:#0AA6FF;text-align:center;font-size:1.05rem;font-weight:600;padding:8px 10px;letter-spacing:0.5px;position:sticky;top:0;z-index:1000;border-bottom:1px solid #222;}
-  header{background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:flex-start;padding:10px 30px;flex-wrap:wrap;border-bottom:2px solid #222;box-shadow:0 3px 6px rgba(0,0,0,0.2);}
+  .delivery-bar{background:#000;color:#0AA6FF;text-align:center;font-size:1.05rem;font-weight:600;padding:8px 10px;}
+  header{background:var(--primary);color:#fff;display:flex;align-items:center;padding:10px 30px;flex-wrap:wrap;}
   header img.logo{width:280px;height:auto;margin-right:20px;}
-  header .title-wrap{display:flex;flex-direction:column;justify-content:center;}
-  header .title-wrap h1{font-size:2rem;margin-bottom:6px;}
-  header .title-wrap p{font-size:1rem;opacity:0.9;}
-  /* filter bar */
-  .filters{max-width:1100px;margin:20px auto 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;}
-  .filters input{flex:1 1 200px;padding:6px 10px;font-size:0.95rem;border:1px solid #ccc;border-radius:4px;}
-  .filters .buttons{display:flex;gap:6px;}
-  .filters button{padding:6px 12px;border:1px solid #999;background:#fff;cursor:pointer;border-radius:4px;font-size:0.9rem;}
+  .filters{max-width:1100px;margin:20px auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .filters input{flex:1 1 200px;padding:6px 10px;}
+  .filters button{padding:6px 12px;border:1px solid #999;background:#fff;cursor:pointer;border-radius:4px;}
   .filters button.active,.filters button:hover{background:#27ae60;color:#fff;}
-  /* product grid */
   .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;padding:25px 20px;max-width:1100px;margin:0 auto;}
-  .product{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.08);transition:transform 0.2s;text-align:center;padding:20px;}
-  .product:hover{transform:translateY(-4px);}
-  .product h3{font-size:1.1rem;margin:12px 0 5px;}
-  .product p{font-size:0.95rem;color:#555;margin-bottom:12px;}
-  /* only first image visible */
-  .product .gallery{
-    position:relative;
-    width:100%;
-    height:160px;
-    overflow:hidden;
-    z-index:1; /* images stay below order button */
-  }
-  .product .gallery img{position:absolute;top:0;left:50%;transform:translateX(-50%);height:160px;object-fit:cover;border-radius:6px;cursor:zoom-in;opacity:0;transition:opacity 0.3s;}
+  .product{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.08);padding:20px;text-align:center;}
+  .product .gallery{position:relative;width:100%;height:160px;overflow:hidden;z-index:1;}
+  .product .gallery img{position:absolute;top:0;left:50%;transform:translateX(-50%);height:160px;object-fit:cover;border-radius:6px;opacity:0;transition:opacity .3s;}
   .product .gallery img:first-child{opacity:1;}
-  /* thumb-strip badge */
-  .thumb-strip{position:absolute;bottom:6px;left:6px;display:flex;gap:2px;background:rgba(0,0,0,0.5);padding:2px;border-radius:4px;pointer-events:none;}
-  .thumb-strip img{width:22px;height:22px;object-fit:cover;border-radius:2px;opacity:0.85;}
-  .order-container{
-    position:relative;
-    z-index:5; /* ensure button is above images */
-    display:inline-block;
-  }
-  .order-button{background:var(--secondary);color:#fff;padding:8px 14px;border-radius:4px;text-decoration:none;font-size:0.95rem;cursor:pointer;transition:background 0.2s;}
-  .order-button:hover{background:#1f8a4c;}
-  .order-menu{display:none;position:absolute;top:110%;left:0;background:#fff;min-width:140px;box-shadow:0 3px 6px rgba(0,0,0,0.2);border-radius:4px;z-index:10;}
-  .order-menu a{display:block;padding:8px 10px;color:#333;text-decoration:none;font-size:0.9rem;}
-  .order-menu a:hover{background:#f4f4f4;}
+  .order-container{position:relative;z-index:5;display:inline-block;}
+  .order-button{background:var(--secondary);color:#fff;padding:8px 14px;border-radius:4px;text-decoration:none;}
+  .order-menu{display:none;position:absolute;top:110%;left:0;background:#fff;min-width:140px;box-shadow:0 3px 6px rgba(0,0,0,.2);}
   .order-container.active .order-menu{display:block;}
-  /* lightbox */
-  #lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:2000;justify-content:center;align-items:center;}
-  #lightbox.active{display:flex;}
-  #lightbox .lightbox-img{max-width:90%;max-height:90%;border-radius:6px;box-shadow:0 4px 15px rgba(0,0,0,0.5);}
-  #lightbox .close{position:absolute;top:20px;right:30px;font-size:2rem;color:#fff;cursor:pointer;}
-  #lightbox .prev,#lightbox .next{position:absolute;top:50%;font-size:2.5rem;color:#fff;cursor:pointer;padding:0 12px;transform:translateY(-50%);}
-  #lightbox .prev{left:30px;}#lightbox .next{right:30px;}
-  #lightbox .prev:hover,#lightbox .next:hover{color:#0AA6FF;}
-  @media(max-width:600px){
-    header{flex-direction:column;align-items:center;text-align:center;padding:15px;}
-    header img.logo{width:180px;margin:0 0 8px;}
-    header .title-wrap h1{font-size:1.4rem;}
-    header .title-wrap p{font-size:0.9rem;}
-  }
+  footer{background:#000;color:#fff;text-align:center;padding:15px;margin-top:40px;}
 </style>
 </head>
 <body>
@@ -71,10 +32,7 @@
 <div class="delivery-bar">🚚 Same-Day Delivery Across Kenya – Order Today, Use Today</div>
 <header>
   <img src="logo.png" alt="Laptopica Logo" class="logo">
-  <div class="title-wrap">
-    <h1>Laptopica</h1>
-    <p>Your Trusted Laptop Supplier in Kenya</p>
-  </div>
+  <h1>Laptopica</h1>
 </header>
 
 <section class="filters">
@@ -89,46 +47,42 @@
 </section>
 
 <section class="products">
-  <!-- Products (unchanged) -->
+  <!-- Example HP product -->
+  <div class="product" data-brand="hp">
+    <div class="gallery">
+      <img src="hp-eb820-1.jpg" alt="">
+      <img src="hp-eb820-2.jpg" alt="">
+      <img src="hp-eb820-3.jpg" alt="">
+    </div>
+    <h3>HP EliteBook 820 G3</h3>
+    <p>Intel Core i5 • 8GB • 256GB SSD • WIN10 • Silver + Bag <br> <strong>KSh 20,999</strong></p>
+    <div class="order-container">
+      <a href="#" class="order-button">Order Now</a>
+      <div class="order-menu">
+        <a href="#">WhatsApp</a><a href="#">Messenger</a><a href="#">Call</a>
+      </div>
+    </div>
+  </div>
+  <!-- Repeat other products (Dell, Lenovo, NEC) with their images -->
 </section>
 
-<!-- Lightbox -->
-<div id="lightbox"><span class="close">&times;</span><img class="lightbox-img" src="" alt=""><span class="prev">&#10094;</span><span class="next">&#10095;</span></div>
-
-<!-- ✅ Customer Reviews Section -->
-<section style="max-width:900px;margin:40px auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-  <h2 style="margin-bottom:15px;color:#27ae60;">💬 Customer Reviews</h2>
-  
-  <div style="margin-bottom:20px;">
-    <strong>Mary W.</strong> ⭐⭐⭐⭐⭐  
-    <p>“The laptop I ordered was delivered the same day! Great condition and exactly as described.”</p>
-  </div>
-
-  <div style="margin-bottom:20px;">
-    <strong>John K.</strong> ⭐⭐⭐⭐☆  
-    <p>“Affordable prices and very responsive support. Highly recommend Laptopica.”</p>
-  </div>
-
-  <div>
-    <strong>Grace M.</strong> ⭐⭐⭐⭐⭐  
-    <p>“I got a Lenovo Chromebook for my studies. Smooth process, thank you!”</p>
-  </div>
+<!-- Reviews -->
+<section style="max-width:900px;margin:40px auto;padding:20px;background:#fff;border-radius:8px;">
+  <h2 style="color:#27ae60;">💬 Customer Reviews</h2>
+  <p><strong>Mary W.</strong> ⭐⭐⭐⭐⭐ “Delivered same day, great condition!”</p>
+  <p><strong>John K.</strong> ⭐⭐⭐⭐☆ “Affordable prices and great support.”</p>
+  <p><strong>Grace M.</strong> ⭐⭐⭐⭐⭐ “Perfect for my studies. Thanks!”</p>
 </section>
 
-<!-- ✅ Why Choose Us Section -->
-<section style="max-width:900px;margin:40px auto;padding:25px;background:#27ae60;color:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.2);text-align:center;">
-  <h2 style="margin-bottom:15px;font-size:1.8rem;">🚀 Why Choose Laptopica?</h2>
-  <p style="font-size:1.1rem;line-height:1.6;">
-    At <strong>Laptopica</strong>, we know that when you buy a laptop, you want it <em>immediately</em>.  
-    That’s why we guarantee <strong>same-day delivery across Kenya</strong> — order today, use today.  
-  </p>
-  <p style="margin-top:15px;font-size:1rem;opacity:0.95;">
-    ✅ Affordable Prices • ✅ Trusted Quality • ✅ Fastest Delivery in Kenya
-  </p>
+<!-- Why Choose Us -->
+<section style="max-width:900px;margin:40px auto;padding:25px;background:#27ae60;color:#fff;border-radius:10px;text-align:center;">
+  <h2>🚀 Why Choose Laptopica?</h2>
+  <p>We guarantee <strong>same-day delivery across Kenya</strong> — order today, use today!</p>
+  <p>✅ Affordable Prices • ✅ Trusted Quality • ✅ Fastest Delivery in Kenya</p>
 </section>
 
-<!-- ✅ Footer -->
-<footer style="background:#000;color:#fff;text-align:center;padding:15px;margin-top:40px;">
+<!-- Footer -->
+<footer>
   <p>&copy; 2025 Laptopica. All Rights Reserved.</p>
   <p>Designed with ❤️ in Kenya</p>
 </footer>
@@ -144,67 +98,13 @@ document.querySelectorAll('.order-button').forEach(btn=>{
   });
 });
 document.addEventListener('click',e=>{
-  if(!e.target.closest('.order-container')){document.querySelectorAll('.order-container').forEach(c=>c.classList.remove('active'));}
-});
-// lightbox
-const lightbox=document.getElementById('lightbox'),
-      lightboxImg=lightbox.querySelector('.lightbox-img'),
-      prevBtn=lightbox.querySelector('.prev'),
-      nextBtn=lightbox.querySelector('.next'),
-      closeBtn=lightbox.querySelector('.close');
-let currentGallery=[],currentIndex=0;
-document.querySelectorAll('.product .gallery img').forEach(img=>{
-  img.addEventListener('click',()=>{
-    const g=img.closest('.gallery');
-    currentGallery=Array.from(g.querySelectorAll('img'));
-    currentIndex=currentGallery.indexOf(img);
-    showImage();lightbox.classList.add('active');
-  });
-});
-function showImage(){lightboxImg.src=currentGallery[currentIndex].src;}
-prevBtn.addEventListener('click',e=>{e.stopPropagation();currentIndex=(currentIndex-1+currentGallery.length)%currentGallery.length;showImage();});
-nextBtn.addEventListener('click',e=>{e.stopPropagation();currentIndex=(currentIndex+1)%currentGallery.length;showImage();});
-closeBtn.addEventListener('click',()=>lightbox.classList.remove('active'));
-lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.classList.remove('active');});
-document.addEventListener('keydown',e=>{
-  if(!lightbox.classList.contains('active'))return;
-  if(e.key==='ArrowLeft')prevBtn.click();
-  if(e.key==='ArrowRight')nextBtn.click();
-  if(e.key==='Escape')lightbox.classList.remove('active');
-});
-// build thumb-strips
-document.querySelectorAll('.product .gallery').forEach(g=>{
-  const imgs=g.querySelectorAll('img');
-  if(imgs.length>1){
-    const strip=document.createElement('div');
-    strip.className='thumb-strip';
-    imgs.forEach((im,i)=>{if(i>0){const t=im.cloneNode();strip.appendChild(t);} });
-    g.appendChild(strip);
+  if(!e.target.closest('.order-container')){
+    document.querySelectorAll('.order-container').forEach(c=>c.classList.remove('active'));
   }
-});
-// search + category filters
-const searchBox=document.getElementById('search');
-const filterBtns=document.querySelectorAll('.filters button');
-const cards=document.querySelectorAll('.products .product');
-function applyFilters(){
-  const term=searchBox.value.toLowerCase();
-  const active=document.querySelector('.filters button.active').dataset.filter;
-  cards.forEach(c=>{
-    const matchBrand=(active==='all'||c.dataset.brand===active);
-    const matchTerm=c.innerText.toLowerCase().includes(term);
-    c.style.display=(matchBrand && matchTerm)?'':'none';
-  });
-}
-searchBox.addEventListener('input',applyFilters);
-filterBtns.forEach(b=>{
-  b.addEventListener('click',()=>{
-    filterBtns.forEach(btn=>btn.classList.remove('active'));
-    b.classList.add('active');
-    applyFilters();
-  });
 });
 </script>
 </body>
 </html>
+
 
 
